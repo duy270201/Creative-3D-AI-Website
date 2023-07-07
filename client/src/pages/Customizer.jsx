@@ -65,8 +65,12 @@ const Customizer = () => {
       })
 
       const data = await respones.json();
-
-      handleDecals(type, `data:image/png;base64,${data.photo}`)
+      // handleDecals(type, `data:image/png;base64,${data.photo}`)
+      if (data.photo) {
+        handleDecals(type, `data:image/png;base64,${data.photo}`)
+      } else {
+        alert(data.message)
+      }
     } catch (error) {
       alert(error)
     } finally {
